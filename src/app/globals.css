@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a `.dark` class on <html>, set before paint in layout.tsx. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ palette
+   Every pairing below was contrast-checked. Body text >= 9:1, muted text >= 4.8:1
+   against both surface tones, in both themes.                                */
+
+:root {
+  /* System Japanese faces. These cost nothing to reference, so they can sit in the
+     global fallback chain; the downloaded webfont deliberately cannot. */
+  --stack-jp-system: "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", "Noto Sans JP",
+    sans-serif;
+  --stack-jp: var(--stack-jp-system);
+  --stack-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    var(--stack-jp-system);
+  --stack-serif: var(--font-mincho), "Hiragino Mincho ProN", "Yu Mincho",
+    "Noto Serif CJK JP", Georgia, serif;
+
+  --paper: #fbfaf7;
+  --paper-2: #f3f0e9;
+  --paper-3: #ffffff;
+  --ink: #17130f;
+  --ink-2: #4b443c;
+  --ink-3: #6f675c;
+  --rule: #e4ddd1;
+  --rule-strong: #cfc5b4;
+  --accent: #1c4a4f;
+  --accent-soft: #e3ecea;
+  --seal: #a8372a;
+  --status: #2f7d52;
+  --shadow: 23 19 15;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #100e0c;
+  --paper-2: #191614;
+  --paper-3: #1d1a17;
+  --ink: #f0ebe3;
+  --ink-2: #bdb4a8;
+  --ink-3: #948a7d;
+  --rule: #2c2723;
+  --rule-strong: #3d3630;
+  --accent: #8cc4bc;
+  --accent-soft: #1a2a29;
+  --seal: #e0705a;
+  --status: #6ec48f;
+  --shadow: 0 0 0;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-seal: var(--seal);
+  --color-status: var(--status);
+
+  /* Indirection through --stack-* lets a locale swap the whole family without any
+     component knowing: see the html[lang="ja"] block below. */
+  --font-sans: var(--stack-sans);
+  --font-serif: var(--stack-serif);
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-jp: var(--stack-jp);
+
+  --breakpoint-xs: 26rem;
+
+  /* A deliberately restrained type scale: 1.25 ratio, tuned by hand at the top end. */
+  --text-display: 4.5rem;
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+
+  --spacing-section: 7rem;
+}
+
+/* ------------------------------------------------------------------- base */
+
+@layer base {
+  * {
+    border-color: var(--rule);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Fine paper grain. Pure CSS, no image request, ~2% opacity. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .dark body::before {
+    opacity: 0.05;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Never let a stray outline appear on programmatic focus of a region. */
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* --------------------------------------------------------------- utilities */
+
+@utility text-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* Minimum touch target. Applied by pointer type rather than viewport width, so a
+   touch tablet at 1024px gets 44px controls while a mouse keeps the tight bar. */
+@utility tap {
+  @media (pointer: coarse) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* Hairline that reads as a brush stroke rather than a border. */
+@utility rule-x {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    var(--rule-strong) 12%,
+    var(--rule-strong) 88%,
+    transparent
+  );
+}
+
+/* ------------------------------------------------------------- animations */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ink-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal[data-visible="true"] {
+  animation: reveal-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.line-draw {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.line-draw[data-visible="true"] {
+  animation: draw-line 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .line-draw {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- printing */
+
+@media print {
+  body::before,
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  .reveal,
+  .line-draw {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555;
+  }
+}
+
+/* ------------------------------------------------- japanese typography (日本語)
+
+   Japanese needs more room than Latin: taller lines, no negative tracking, and
+   `palt` so proportional kana stop looking gappy. Rules that only affect spacing
+   are scoped to the Japanese route; the font family applies to any :lang(ja) run
+   so the decorative glyphs on the English pages render correctly too.           */
+
+:lang(ja) {
+  font-family: var(--stack-jp);
+  font-feature-settings: "palt" 1;
+  font-variant-east-asian: proportional-width;
+}
+
+html[lang="ja"] {
+  /* The webfont enters the cascade only here, and one swap re-points every
+     `font-sans` / `font-serif` utility on the page. */
+  --stack-jp: "Noto Sans JP", var(--stack-jp-system);
+  --stack-serif: var(--stack-jp);
+  --stack-sans: var(--stack-jp);
+}
+
+html[lang="ja"] body {
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  /* Browsers apply Japanese line-breaking rules (kinsoku) on their own; these
+     just stop Latin-oriented defaults from overriding them. */
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+html[lang="ja"] p,
+html[lang="ja"] li {
+  line-height: 1.85;
+}
+
+/* Latin tracking that flatters Shippori Mincho crushes kanji, so reset it. */
+html[lang="ja"] :is(h1, h2, h3, h4) {
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+html[lang="ja"] .text-vertical {
+  letter-spacing: 0.18em;
+}
+
+/* `balance` and `pretty` are tuned for word-spaced scripts and cause odd ragged
+   edges in Japanese, where any character is a break opportunity. */
+html[lang="ja"] :is(h1, h2, h3, h4, p) {
+  text-wrap: initial;
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.82);
+  }
+}
+
+.status-dot {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes dialog-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.dialog-backdrop {
+  animation: dialog-fade 0.25s ease-out both;
+}
+
+.dialog-panel {
+  animation: dialog-rise 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
