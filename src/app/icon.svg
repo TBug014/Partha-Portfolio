@@ -1,5 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#17130f"/>
-  <circle cx="32" cy="32" r="17" fill="none" stroke="#a8372a" stroke-width="4.5"
-          stroke-linecap="round" stroke-dasharray="90 17" transform="rotate(-38 32 32)"/>
+  <!--
+    Same geometry as the in-page monogram: a P carrying the handakuten, the
+    circle that turns ハ into パ. Drawn rather than set in a typeface so it is
+    identical everywhere and needs no font to render.
+
+    The media query gives real light and dark variants: browsers that support
+    SVG favicons honour it against their own chrome, and anything that does not
+    falls back to the dark ink, which is the safe default on a light tab strip.
+  -->
+  <style>
+    .mark { stroke: #14110e; }
+    .dot { fill: #14110e; }
+    @media (prefers-color-scheme: dark) {
+      .mark { stroke: #f1eee7; }
+      .dot { fill: #f1eee7; }
+    }
+  </style>
+  <path class="mark" d="M14 52V12h12a10 10 0 0 1 0 20H14" fill="none" stroke-width="7"
+        stroke-linecap="butt" stroke-linejoin="miter"/>
+  <circle class="dot" cx="48" cy="13" r="5"/>
 </svg>

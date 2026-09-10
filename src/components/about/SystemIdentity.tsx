@@ -14,12 +14,12 @@ export default function SystemIdentity({ d }: { d: Dictionary }) {
       {/* Portrait, summary and readout share one hairline grid, so the photo is
           part of the structure rather than an image dropped beside it. */}
       <div className="mt-6 grid gap-px border border-rule bg-rule lg:grid-cols-[19rem_1fr]">
-        <div className="bg-paper p-6 sm:p-8">
+        <div className="bg-paper-2 p-6 sm:p-8">
           <ProfilePhoto d={d} />
         </div>
 
         <div className="grid gap-px bg-rule">
-          <div className="bg-paper p-6 sm:p-8 lg:p-10">
+          <div className="bg-paper-2 p-6 sm:p-8 lg:p-10">
             <p className="max-w-2xl text-[19px] leading-[1.55] text-ink sm:text-[21px]">
               {identity.statement}
             </p>
@@ -31,7 +31,7 @@ export default function SystemIdentity({ d }: { d: Dictionary }) {
             {identity.readout.map((row, i) => (
               <div
                 key={row.key}
-                className={`bg-paper px-6 py-4 sm:px-8 ${
+                className={`bg-paper-2 px-6 py-4 sm:px-8 ${
                   i === identity.readout.length - 1 && identity.readout.length % 2 === 1
                     ? "sm:col-span-2"
                     : ""

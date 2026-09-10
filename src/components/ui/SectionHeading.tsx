@@ -21,14 +21,17 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <header className="mb-12 md:mb-16 lg:mb-20">
+      {/* 01 / LABEL, then a rule to the edge: the wayfinding index reads as a
+          technical label, distinct from the heading it introduces. */}
       <Reveal className="flex items-center gap-4">
-        <span className="font-mono text-xs tracking-[0.2em] text-ink-3 tabular-nums">
+        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-2 tabular-nums">
           {index}
+          <span aria-hidden="true" className="mx-2 text-rule-strong">
+            /
+          </span>
+          <span lang={altLang}>{alt}</span>
         </span>
-        <span className="h-px w-8 bg-rule-strong" aria-hidden="true" />
-        <span lang={altLang} className="font-serif text-sm text-ink-3" aria-hidden="true">
-          {alt}
-        </span>
+        <span className="h-px flex-1 bg-rule" aria-hidden="true" />
       </Reveal>
 
       <Reveal delay={60}>

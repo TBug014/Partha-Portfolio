@@ -27,6 +27,8 @@ const ja: Dictionary = {
     ],
     languageName: "日本語",
   },
+  brand: { latin: "Partha", kana: "パルタ" },
+
   person: {
     nameLines: ["パルタ・プロティム", "サルマ"],
     fullName: "パルタ・プロティム・サルマ",

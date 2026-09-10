@@ -24,7 +24,7 @@ export default function UniversityLife({ d, index }: { d: Dictionary; index: str
 
       <ul className="grid gap-px border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-3">
         {d.universityLife.entries.map((entry, i) => (
-          <Reveal as="li" key={entry.title} delay={i * 80} className="bg-paper">
+          <Reveal as="li" key={entry.title} delay={i * 80} className="bg-paper-2">
             <article className="flex h-full flex-col p-6 sm:p-8">
               <span
                 lang="ja"

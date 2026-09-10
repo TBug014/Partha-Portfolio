@@ -13,7 +13,7 @@ export default function CoreDirectives({ d }: { d: Dictionary }) {
 
       <ul className="mt-6 grid gap-px border border-rule bg-rule md:grid-cols-3">
         {directives.items.map((item) => (
-          <li key={item.romaji} className="flex flex-col bg-paper p-6 sm:p-8">
+          <li key={item.romaji} className="flex flex-col bg-paper-2 p-6 sm:p-8">
             <div className="flex items-baseline gap-3">
               <span
                 lang="ja"

@@ -22,6 +22,8 @@ const en: Dictionary = {
     ],
     languageName: "English",
   },
+  brand: { latin: "Partha", kana: "パルタ" },
+
   person: {
     nameLines: ["Partha Protim", "Sarmah"],
     fullName: "Partha Protim Sarmah",

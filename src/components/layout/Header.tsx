@@ -9,6 +9,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import ResumeButton from "@/components/resume/ResumeButton";
 import { Close, Download, Menu } from "@/components/ui/Icons";
 import { pathForLocale, type ChromeStrings, type Locale } from "@/content";
+import Logo from "@/components/brand/Logo";
 
 export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale }) {
   const pathname = usePathname();
@@ -91,24 +92,10 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
           {/* ------------------------------------------------ left: identity */}
           <Link
             href={base}
-            className="group flex min-h-11 min-w-0 flex-1 items-center gap-3 lg:flex-none"
+            className="group flex min-h-11 min-w-0 flex-1 items-center lg:flex-none"
             aria-label={`${c.fullName}, ${c.ui.backToTop}`}
           >
-            <span className="shrink-0 border border-rule px-1.5 py-0.5 font-mono text-[11px] tracking-[0.1em] text-ink-2 transition-colors group-hover:border-ink group-hover:text-ink">
-              {c.monogram}
-            </span>
-            <span className="flex min-w-0 items-baseline gap-2.5">
-              <span className="hidden truncate font-serif text-[15px] font-bold tracking-[-0.02em] text-ink xs:inline">
-                {c.fullName}
-              </span>
-              <span
-                lang={locale === "en" ? "ja" : "en"}
-                aria-hidden="true"
-                className="hidden shrink-0 font-serif text-[11px] text-ink-3 transition-colors group-hover:text-accent sm:inline lg:hidden xl:inline"
-              >
-                {c.nameAlt}
-              </span>
-            </span>
+            <Logo brand={c.brand} />
           </Link>
 
           {/* ------------------------------------------- centre: page links */}

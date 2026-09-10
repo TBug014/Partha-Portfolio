@@ -40,7 +40,7 @@ export default function ModuleMatrix({ d }: { d: Dictionary }) {
           role="tablist"
           aria-label={sectionLabels.modules}
           onKeyDown={onKeyDown}
-          className="flex flex-wrap border-b border-rule bg-paper"
+          className="flex flex-wrap border-b border-rule bg-paper-2"
         >
           {modules.clusters.map((cluster, i) => {
             const selected = i === active;
@@ -80,11 +80,11 @@ export default function ModuleMatrix({ d }: { d: Dictionary }) {
             aria-labelledby={`tab-${cluster.id}`}
             hidden={i !== active}
             tabIndex={0}
-            className="bg-paper p-5 sm:p-8"
+            className="bg-paper-2 p-5 sm:p-8"
           >
             <ul className="grid grid-cols-2 gap-px bg-rule sm:grid-cols-3 lg:grid-cols-4">
               {cluster.items.map((item) => (
-                <li key={item} className="bg-paper px-4 py-4 text-[13px] text-ink-2">
+                <li key={item} className="bg-paper-2 px-4 py-4 text-[13px] text-ink-2">
                   {item}
                 </li>
               ))}

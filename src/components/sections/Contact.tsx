@@ -14,17 +14,14 @@ export default function Contact({ d, index }: { d: Dictionary; index: string }) 
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
           <Reveal className="flex items-center gap-4">
-            <span className="font-mono text-xs tracking-[0.2em] text-ink-3 tabular-nums">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-2 tabular-nums">
               {index}
+              <span aria-hidden="true" className="mx-2 text-rule-strong">
+                /
+              </span>
+              <span lang={otherLocale(d.locale)}>{h.alt}</span>
             </span>
-            <span className="h-px w-8 bg-rule-strong" aria-hidden="true" />
-            <span
-              lang={otherLocale(d.locale)}
-              aria-hidden="true"
-              className="font-serif text-sm text-ink-3"
-            >
-              {h.alt}
-            </span>
+            <span className="h-px flex-1 bg-rule" aria-hidden="true" />
           </Reveal>
 
           <Reveal delay={60}>

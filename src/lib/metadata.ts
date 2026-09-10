@@ -59,8 +59,8 @@ export function buildMetadata(locale: Locale): Metadata {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfaf7" },
-    { media: "(prefers-color-scheme: dark)", color: "#100e0c" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f3eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#13100d" },
   ],
   colorScheme: "light dark",
 };

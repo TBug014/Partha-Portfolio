@@ -32,13 +32,13 @@ export default function Projects({
         {d.projects.items.map((project, i) => {
           const Wrapper = project.href ? "a" : "div";
           return (
-            <Reveal as="li" key={project.name} delay={i * 90} className="bg-paper">
+            <Reveal as="li" key={project.name} delay={i * 90} className="bg-paper-2">
               <Wrapper
                 {...(project.href
                   ? { href: project.href, target: "_blank", rel: "noreferrer noopener" }
                   : {})}
                 className={`group flex h-full flex-col p-6 transition-colors duration-300 sm:p-8 lg:p-10 ${
-                  project.href ? "hover:bg-paper-2" : ""
+                  project.href ? "hover:bg-accent-soft" : ""
                 }`}
               >
                 <div className="flex items-start justify-between gap-6">

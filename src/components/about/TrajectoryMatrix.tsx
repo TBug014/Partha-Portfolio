@@ -13,7 +13,7 @@ export default function TrajectoryMatrix({ d }: { d: Dictionary }) {
 
       <ol className="mt-6 grid gap-px border border-rule bg-rule sm:grid-cols-3">
         {trajectory.items.map((item) => (
-          <li key={item.index} className="bg-paper p-6 sm:p-8">
+          <li key={item.index} className="bg-paper-2 p-6 sm:p-8">
             <span className="font-mono text-[11px] tabular-nums text-accent">
               {item.index}
             </span>

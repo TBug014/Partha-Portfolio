@@ -40,7 +40,7 @@ export default function MajorProject({ d, index }: { d: Dictionary; index: strin
       />
 
       <Reveal>
-        <article className="border border-rule bg-paper">
+        <article className="border border-rule bg-paper-2">
           {/* ------------------------------------------------ summary + stack */}
           <div className="border-b border-rule p-6 sm:p-8 lg:p-10">
             <div className="flex items-start justify-between gap-6">

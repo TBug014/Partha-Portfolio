@@ -23,35 +23,43 @@
   --stack-serif: var(--font-jakarta), "Hiragino Mincho ProN", "Yu Mincho",
     "Noto Serif CJK JP", Georgia, serif;
 
-  --paper: #fbfaf7;
-  --paper-2: #f3f0e9;
-  --paper-3: #ffffff;
-  --ink: #17130f;
-  --ink-2: #4b443c;
-  --ink-3: #6f675c;
-  --rule: #e4ddd1;
-  --rule-strong: #cfc5b4;
-  --accent: #1c4a4f;
-  --accent-soft: #e3ecea;
-  --seal: #a8372a;
-  --status: #2f7d52;
-  --shadow: 23 19 15;
+  --paper: #f7f3eb;
+  --paper-2: #fefcf7;
+  --paper-3: #fefcf7;
+  --ink: #14110e;
+  --ink-2: #69625d;
+  /* As in the previous palette, nothing lighter than the secondary reaches AA
+     on this background, so the third tier is carried by size, weight and the
+     mono face rather than by colour. */
+  --ink-3: #69625d;
+  --rule: #e2ddd5;
+  --rule-strong: #cfc7bb;
+  /* Same hue as the reference accent, darkened to clear AA for small text: the
+     source value is 3.51:1, which fails for the label and link sizes used here. */
+  --accent: #b94a00;
+  --accent-soft: #ffecde;
+  /* The reference accent exactly, kept for non-text marks. */
+  --seal: #d16022;
+  --status: #d16022;
+  --shadow: 20 17 14;
   color-scheme: light;
 }
 
 .dark {
-  --paper: #100e0c;
-  --paper-2: #191614;
-  --paper-3: #1d1a17;
-  --ink: #f0ebe3;
-  --ink-2: #bdb4a8;
-  --ink-3: #948a7d;
-  --rule: #2c2723;
-  --rule-strong: #3d3630;
-  --accent: #8cc4bc;
-  --accent-soft: #1a2a29;
-  --seal: #e0705a;
-  --status: #6ec48f;
+  /* Derived: the reference site is light-only, so this is its warm family
+     inverted, holding the same hues at dark-appropriate lightness. */
+  --paper: #13100d;
+  --paper-2: #1f1b18;
+  --paper-3: #1f1b18;
+  --ink: #f1eee7;
+  --ink-2: #aaa39d;
+  --ink-3: #aaa39d;
+  --rule: #322d29;
+  --rule-strong: #47413d;
+  --accent: #e57f4f;
+  --accent-soft: #301c13;
+  --seal: #f28c5c;
+  --status: #f28c5c;
   --shadow: 0 0 0;
   color-scheme: dark;
 }
@@ -74,7 +82,7 @@
      component knowing: see the html[lang="ja"] block below. */
   --font-sans: var(--stack-sans);
   --font-serif: var(--stack-serif);
-  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
   --font-jp: var(--stack-jp);
 
   --breakpoint-xs: 26rem;
@@ -106,21 +114,6 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Fine paper grain. Pure CSS, no image request, ~2% opacity. */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .dark body::before {
-    opacity: 0.05;
   }
 
   ::selection {
@@ -266,7 +259,6 @@
 /* --------------------------------------------------------------- printing */
 
 @media print {
-  body::before,
   header,
   footer,
   .no-print {

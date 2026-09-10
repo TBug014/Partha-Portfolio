@@ -12,8 +12,14 @@ export function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-4">
-      <span className="font-mono text-[11px] tabular-nums text-accent">{index}</span>
-      <h2 id={id} className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink">
+      <h2
+        id={id}
+        className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-2 tabular-nums"
+      >
+        {index}
+        <span aria-hidden="true" className="mx-2 text-rule-strong">
+          /
+        </span>
         {children}
       </h2>
       <span className="h-px flex-1 bg-rule" aria-hidden="true" />

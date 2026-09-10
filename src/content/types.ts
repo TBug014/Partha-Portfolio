@@ -128,8 +128,7 @@ export type PageLink = { href: string; label: string };
  */
 export type ChromeStrings = {
   fullName: string;
-  nameAlt: string;
-  monogram: string;
+  brand: { latin: string; kana: string };
   /** Projects / About / Resume, the centre of the navbar. */
   pages: { projects: string; about: string; resume: string };
   ui: {
@@ -171,6 +170,9 @@ export interface Dictionary {
     /** Human-readable name of this language, for the switcher and hreflang UI. */
     languageName: string;
   };
+
+  /** Identity mark. Same in both locales: a name is not translated. */
+  brand: { latin: string; kana: string };
 
   person: {
     /** Display name split across lines so each language controls its own break. */

@@ -1,4 +1,3 @@
-import { monogram } from "./shared";
 import en from "./en";
 import ja from "./ja";
 import {
@@ -50,15 +49,14 @@ export function homeSections(d: Dictionary): SectionId[] {
 
 export { defaultLocale, locales };
 export type { ChromeStrings, Dictionary, Locale, ResumeStrings, SectionId };
-export { contactDetails, monogram, socials } from "./shared";
+export { contactDetails, socials } from "./shared";
 
 /** Narrow slice of the dictionary handed to the client-side chrome. */
 export function chromeStrings(d: Dictionary): ChromeStrings {
   const u = d.ui;
   return {
     fullName: d.person.fullName,
-    nameAlt: d.person.nameAlt,
-    monogram,
+    brand: { ...d.brand },
     pages: { ...d.pages },
     ui: {
       backToTop: u.backToTop,

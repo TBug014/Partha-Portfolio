@@ -4,9 +4,6 @@
  * `en.ts` and `ja.ts`.
  */
 
-/** Initials mark used on the left of the navbar. Identical in both locales. */
-export const monogram = "PPS";
-
 export const contactDetails = {
   email: "parthapsarmah14@gmail.com",
   resumePath: "/Partha_Protim_Sarmah_CV.pdf",

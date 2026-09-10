@@ -1,4 +1,4 @@
-import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
 
 /**
  * Plus Jakarta Sans, variable. One file covers 200-800, so every weight the
@@ -11,12 +11,16 @@ const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
 });
 
-const jetbrains = JetBrains_Mono({
+/**
+ * IBM Plex Mono, used sparingly: section numbers, dates, metadata, technology
+ * labels and small interface details. Two weights is all those roles need.
+ */
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
-  variable: "--font-jetbrains",
+  variable: "--font-plex-mono",
 });
 
 /** Latin faces, loaded on every route. */
-export const fontVariables = [jakarta.variable, jetbrains.variable].join(" ");
+export const fontVariables = [jakarta.variable, plexMono.variable].join(" ");

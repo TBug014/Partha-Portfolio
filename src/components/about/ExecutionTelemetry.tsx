@@ -33,7 +33,7 @@ export default function ExecutionTelemetry({ d }: { d: Dictionary }) {
                   onClick={() => setOpen(isOpen ? null : node.id)}
                   aria-expanded={isOpen}
                   aria-controls={`node-${node.id}`}
-                  className="group flex w-full items-start gap-4 bg-paper px-5 py-5 text-left transition-colors hover:bg-paper-2 sm:gap-6 sm:px-8"
+                  className="group flex w-full items-start gap-4 bg-paper-2 px-5 py-5 text-left transition-colors hover:bg-accent-soft sm:gap-6 sm:px-8"
                 >
                   <span
                     aria-hidden="true"
@@ -76,7 +76,7 @@ export default function ExecutionTelemetry({ d }: { d: Dictionary }) {
                 role="region"
                 aria-label={node.label}
                 hidden={!isOpen}
-                className="border-t border-rule bg-paper px-5 py-5 sm:px-8"
+                className="border-t border-rule bg-paper-2 px-5 py-5 sm:px-8"
               >
                 <ul className="space-y-2.5">
                   {node.detail.map((line) => (
