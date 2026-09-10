@@ -30,7 +30,7 @@ export default function Contact({ d, index }: { d: Dictionary; index: string }) 
           <Reveal delay={60}>
             <h2
               id="contact-heading"
-              className="mt-5 font-serif text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink sm:text-4xl lg:text-5xl"
+              className="mt-5 font-serif text-[2rem] font-bold leading-[1.12] tracking-[-0.025em] text-ink sm:text-4xl lg:text-5xl"
             >
               {h.title}
             </h2>
@@ -46,7 +46,7 @@ export default function Contact({ d, index }: { d: Dictionary; index: string }) 
             {/* Wraps rather than truncating. A clipped address is unusable. */}
             <a
               href={`mailto:${contactDetails.email}`}
-              className="group mt-8 inline-flex min-h-11 max-w-full items-center gap-3 border-b border-rule-strong pb-2 font-serif text-[clamp(1.1rem,5.2vw,2.25rem)] leading-tight text-ink transition-colors hover:border-accent hover:text-accent sm:mt-10"
+              className="group mt-8 inline-flex min-h-11 max-w-full items-center gap-3 border-b border-rule-strong pb-2 font-serif text-[clamp(1.1rem,5.2vw,2.25rem)] font-semibold leading-tight tracking-[-0.02em] text-ink transition-colors hover:border-accent hover:text-accent sm:mt-10"
             >
               <span className="break-all">{contactDetails.email}</span>
               <ArrowUpRight

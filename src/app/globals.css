@@ -13,9 +13,14 @@
   --stack-jp-system: "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", "Noto Sans JP",
     sans-serif;
   --stack-jp: var(--stack-jp-system);
-  --stack-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+
+  /* Plus Jakarta Sans is the Latin face for both text and display. The CJK
+     fallbacks differ between the two stacks on purpose: kanji accents on the
+     English pages keep their mincho form, which is what they render in today,
+     so swapping the Latin face leaves the Japanese typography untouched. */
+  --stack-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system,
     var(--stack-jp-system);
-  --stack-serif: var(--font-mincho), "Hiragino Mincho ProN", "Yu Mincho",
+  --stack-serif: var(--font-jakarta), "Hiragino Mincho ProN", "Yu Mincho",
     "Noto Serif CJK JP", Georgia, serif;
 
   --paper: #fbfaf7;
@@ -134,8 +139,23 @@
     outline: none;
   }
 
+  /* One family carries the whole scale, so hierarchy comes from weight and
+     tracking. Plus Jakarta Sans is wide and open, so display sizes want
+     negative tracking to stop them reading loose. */
   h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
     text-wrap: balance;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+  }
+
+  /* Optical sizing: the larger the type, the tighter it should sit. */
+  body {
+    font-weight: 400;
+    letter-spacing: -0.005em;
   }
 
   p {

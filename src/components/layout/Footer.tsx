@@ -11,7 +11,9 @@ export default function Footer({ d, locale }: { d: Dictionary; locale: Locale })
       <div className="mx-auto w-full max-w-[76rem] px-5 py-12 sm:px-8 lg:px-12">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-serif text-lg text-ink">{d.person.fullName}</p>
+            <p className="font-serif text-lg font-bold tracking-[-0.02em] text-ink">
+              {d.person.fullName}
+            </p>
             <p
               lang={locale === "en" ? "ja" : "en"}
               className="mt-1 font-serif text-xs tracking-widest text-ink-3"

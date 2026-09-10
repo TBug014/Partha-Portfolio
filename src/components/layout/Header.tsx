@@ -98,7 +98,7 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
               {c.monogram}
             </span>
             <span className="flex min-w-0 items-baseline gap-2.5">
-              <span className="hidden truncate font-serif text-[15px] tracking-tight text-ink xs:inline">
+              <span className="hidden truncate font-serif text-[15px] font-bold tracking-[-0.02em] text-ink xs:inline">
                 {c.fullName}
               </span>
               <span
@@ -119,7 +119,7 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
                   <Link
                     href={page.href}
                     aria-current={isCurrent(page.href) ? "page" : undefined}
-                    className={`tap relative whitespace-nowrap py-1 text-[13px] tracking-wide transition-colors ${
+                    className={`tap relative whitespace-nowrap py-1 text-[13px] font-medium tracking-normal transition-colors ${
                       isCurrent(page.href) ? "text-ink" : "text-ink-3 hover:text-ink"
                     }`}
                   >
@@ -134,7 +134,7 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
                 </li>
               ))}
               <li>
-                <ResumeButton className="tap relative whitespace-nowrap py-1 text-[13px] tracking-wide text-ink-3 transition-colors hover:text-ink">
+                <ResumeButton className="tap relative whitespace-nowrap py-1 text-[13px] font-medium tracking-normal text-ink-3 transition-colors hover:text-ink">
                   {c.pages.resume}
                 </ResumeButton>
               </li>
@@ -180,7 +180,9 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
           className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-paper lg:hidden"
         >
           <div className="flex h-16 items-center justify-between px-5 sm:px-8">
-            <span className="font-serif text-[15px] text-ink">{c.ui.menu}</span>
+            <span className="font-serif text-[15px] font-semibold text-ink">
+              {c.ui.menu}
+            </span>
             <button
               type="button"
               onClick={close}
@@ -199,7 +201,7 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
                     href={page.href}
                     onClick={close}
                     aria-current={isCurrent(page.href) ? "page" : undefined}
-                    className="flex min-h-14 items-baseline gap-4 py-4 font-serif text-xl text-ink sm:text-2xl"
+                    className="flex min-h-14 items-baseline gap-4 py-4 font-serif text-xl font-semibold text-ink sm:text-2xl"
                   >
                     <span className="font-mono text-[11px] text-ink-3 tabular-nums">
                       {String(i + 1).padStart(2, "0")}
@@ -209,7 +211,7 @@ export default function Header({ c, locale }: { c: ChromeStrings; locale: Locale
                 </li>
               ))}
               <li>
-                <ResumeButton className="flex min-h-14 items-baseline gap-4 py-4 font-serif text-xl text-ink sm:text-2xl">
+                <ResumeButton className="flex min-h-14 items-baseline gap-4 py-4 font-serif text-xl font-semibold text-ink sm:text-2xl">
                   <span className="font-mono text-[11px] text-ink-3 tabular-nums">
                     {String(pages.length + 1).padStart(2, "0")}
                   </span>

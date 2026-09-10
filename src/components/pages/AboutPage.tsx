@@ -19,7 +19,7 @@ export default function AboutPage({ d }: { d: Dictionary }) {
           <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-3">
             {d.heading.about.alt} / {d.person.fullName}
           </p>
-          <h1 className="mt-4 font-serif text-[clamp(2rem,5vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.03em] text-ink">
+          <h1 className="mt-4 font-serif text-[clamp(2rem,5vw,3.25rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-ink">
             {d.heading.about.title}
           </h1>
           {d.heading.about.lead ? (

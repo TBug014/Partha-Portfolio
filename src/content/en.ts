@@ -607,8 +607,7 @@ const en: Dictionary = {
     opensInNewTab: " (opens in a new tab)",
     languageLabel: "Language",
     switchLanguage: "日本語で読む",
-    credo:
-      "Become a skilled engineer. Build something useful. Keep exploring.",
+    credo: "Become a skilled engineer. Build something useful. Keep exploring.",
     rights: "All rights reserved.",
     notFoundAlt: "見つかりません",
     notFoundLead:

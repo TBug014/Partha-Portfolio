@@ -28,7 +28,7 @@ export default function Hero({ d }: { d: Dictionary }) {
                   key={line}
                   as="span"
                   delay={80 + i * 80}
-                  className={`block font-serif text-[clamp(1.9rem,5.6vw,3.5rem)] font-normal leading-[1.05] tracking-[-0.03em] text-ink ${
+                  className={`block font-serif text-[clamp(1.9rem,5.6vw,3.5rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-ink ${
                     i > 0 ? "mt-1" : ""
                   }`}
                 >

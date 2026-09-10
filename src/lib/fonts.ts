@@ -1,31 +1,14 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
-import localFont from "next/font/local";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 
 /**
- * Shippori Mincho, self-hosted as Latin slices only (~81 KB for three weights).
- *
- * It is a Japanese mincho family, and `next/font/google` with `subsets: ["latin"]`
- * still emitted 366 @font-face rules plus a <link rel="preload"> for every slice,
- * roughly 7 MB pulled on every page load for glyphs the Latin design never paints.
- * Taking the three latin-range files directly and serving them locally keeps the
- * typeface identical and removes the download. Japanese glyphs on the English
- * pages fall through to the reader's system mincho, which is the intended design.
+ * Plus Jakarta Sans, variable. One file covers 200-800, so every weight the
+ * design uses (400 body, 500-600 nav and buttons, 700-800 headings) costs
+ * nothing extra over a single static weight.
  */
-const mincho = localFont({
-  src: [
-    { path: "../fonts/ShipporiMincho-400-latin.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/ShipporiMincho-500-latin.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/ShipporiMincho-600-latin.woff2", weight: "600", style: "normal" },
-  ],
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
   display: "swap",
-  variable: "--font-mincho",
-  fallback: ["Hiragino Mincho ProN", "Yu Mincho", "Georgia", "serif"],
+  variable: "--font-jakarta",
 });
 
 const jetbrains = JetBrains_Mono({
@@ -36,6 +19,4 @@ const jetbrains = JetBrains_Mono({
 });
 
 /** Latin faces, loaded on every route. */
-export const fontVariables = [inter.variable, mincho.variable, jetbrains.variable].join(
-  " ",
-);
+export const fontVariables = [jakarta.variable, jetbrains.variable].join(" ");
